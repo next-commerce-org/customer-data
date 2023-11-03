@@ -12,7 +12,7 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<Customer> getCustomers() {
          List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer( "johndoe@example.com","John", "Doe"));
+        customers.add(new Customer( "johndoe@example.com","John", "Doe", "1234567890"));
         return customers;
        
     }
