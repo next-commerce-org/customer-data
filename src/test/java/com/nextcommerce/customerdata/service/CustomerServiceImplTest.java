@@ -1,3 +1,5 @@
+package com.nextcommerce.customerdata.service;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
