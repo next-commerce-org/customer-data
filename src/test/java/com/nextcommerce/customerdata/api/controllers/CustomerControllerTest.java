@@ -33,6 +33,13 @@ public class CustomerControllerTest {
     private Mapper<CustomerDto, Customer> mapper;
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    CustomerController customerController;
+
+    @Test
+    void testCustomerController() {
+        assert (customerController != null);
+    }
 
     @Test
     void testCustomerEmpty() throws Exception {
