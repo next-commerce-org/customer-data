@@ -23,9 +23,9 @@ public class CustomerMapper implements Mapper<CustomerDto, Customer> {
     public List<CustomerDto> toDtos(List<Customer> customers) {
         List<CustomerDto> dtos = new ArrayList<>();
         customers.forEach(customer ->
-        {
-            dtos.add(toDto(customer));
-        });
+
+                dtos.add(toDto(customer))
+        );
         return dtos;
 
     }
@@ -34,9 +34,9 @@ public class CustomerMapper implements Mapper<CustomerDto, Customer> {
     public List<Customer> toModels(List<CustomerDto> d) {
         List<Customer> customers = new ArrayList<>();
         d.forEach(customerDto ->
-        {
-            customers.add(toModel(customerDto));
-        });
+
+                customers.add(toModel(customerDto))
+        );
         return customers;
     }
 

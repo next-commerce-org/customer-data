@@ -2,7 +2,6 @@ package com.nextcommerce.customerdata.api.controllers;
 
 import com.nextcommerce.customerdata.api.dto.CustomerDto;
 import com.nextcommerce.customerdata.domain.Customer;
-import com.nextcommerce.customerdata.mapper.CustomerMapper;
 import com.nextcommerce.customerdata.mapper.Mapper;
 import com.nextcommerce.customerdata.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +13,14 @@ import java.util.List;
 
 @RestController
 public class CustomerController {
+    private final CustomerService customerService;
+    private final Mapper<CustomerDto, Customer> customerMapper;
+
     @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private Mapper<CustomerDto, Customer> customerMapper;
+    public CustomerController(CustomerService customerService, Mapper<CustomerDto, Customer> customerMapper) {
+        this.customerService = customerService;
+        this.customerMapper = customerMapper;
+    }
 
     @GetMapping("/customers")
     public ResponseEntity<List<CustomerDto>> getCustomers() {

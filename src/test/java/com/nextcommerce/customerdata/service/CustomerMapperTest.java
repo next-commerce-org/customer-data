@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerMapperTest {
+class CustomerMapperTest {
 
     private CustomerMapper customerMapper = new CustomerMapper();
 
     @Test
-    public void testToDto() {
+    void testToDto() {
         //generate new customer object
         Customer customer = new Customer("john.dow@email.com", "John",
                 "Dow", "1234567890");
@@ -26,7 +26,7 @@ public class CustomerMapperTest {
     }
 
     @Test
-    public void testToModel() {
+    void testToModel() {
         //generate new customerDto object
         CustomerDto customerDto = new CustomerDto("john.dow@email.com",
                 "John", "Dow", "1234567890");
@@ -39,7 +39,7 @@ public class CustomerMapperTest {
     }
 
     @Test
-    public void testToDtos() {
+    void testToDtos() {
         //generate new customer object
         Customer customer = new Customer("john.dow@email.com", "John",
                 "Dow", "1234567890");
@@ -54,7 +54,7 @@ public class CustomerMapperTest {
     }
 
     @Test
-    public void testToModels() {
+    void testToModels() {
         //generate new customerDto object
         CustomerDto customerDto = new CustomerDto("john.dow@email.com",
                 "John", "Dow", "1234567890");
@@ -67,16 +67,18 @@ public class CustomerMapperTest {
         assert (customerDtos.get(0).getLastName().equals(customers.get(0).getLastName()));
         assert (customerDtos.get(0).getTelephone().equals(customers.get(0).getTelephone()));
     }
+
     @Test
-    public void testToModelsEmptyList() {
+    void testToModelsEmptyList() {
         //generate new customerDto object
         List<CustomerDto> customerDtos = new ArrayList<>();
         List<Customer> customers = customerMapper.toModels(customerDtos);
         //assert that the customer object has the same values as the customerDto object
         assert (customers.size() == 0);
     }
+
     @Test
-    public void testToDtosEmptyList() {
+    void testToDtosEmptyList() {
         //generate new customerDto object
         List<Customer> customers = new ArrayList<>();
         List<CustomerDto> customerDtos = customerMapper.toDtos(customers);
