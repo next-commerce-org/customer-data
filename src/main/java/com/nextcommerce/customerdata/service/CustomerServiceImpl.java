@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.nextcommerce.customerdata.domain.Customer;
 
+/**
+ * CustomerServiceImpl implements CustomerService interface.
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
