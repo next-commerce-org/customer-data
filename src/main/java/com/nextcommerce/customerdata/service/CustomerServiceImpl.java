@@ -16,7 +16,6 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> customers = new ArrayList<>();
         customers.add(new Customer("johndoe@example.com", "John", "Doe", "1234567890"));
         return customers;
-
     }
 
 }
