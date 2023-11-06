@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class CustomerController {
     private final CustomerService customerService;
-    private final Mapper<CustomerDto, Customer> customerMapper;
+    private final Mapper<CustomerDto,Customer> customerMapper;
 
     @Autowired
     public CustomerController(CustomerService customerService, Mapper<CustomerDto, Customer> customerMapper) {

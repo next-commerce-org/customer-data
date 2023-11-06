@@ -8,6 +8,5 @@ import com.nextcommerce.customerdata.domain.Customer;
 
 public interface CustomerService {
     public List<Customer> getCustomers();
-    public void registerCustomer(Customer customer);
     
 }
