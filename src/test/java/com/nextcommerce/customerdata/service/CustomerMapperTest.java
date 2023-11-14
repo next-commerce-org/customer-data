@@ -45,12 +45,12 @@ class CustomerMapperTest {
                 "Dow", "1234567890");
         List<Customer> customers = new ArrayList<>();
         customers.add(customer);
-        List<CustomerDto> customerDtos = customerMapper.toDtos(customers);
+        Iterable<CustomerDto> customerDtos = customerMapper.toDtos(customers);
         //assert that the customerDto object has the same values as the customer object
-        assert (customerDtos.get(0).getEmail().equals(customer.getEmail()));
-        assert (customerDtos.get(0).getFirstName().equals(customer.getFirstName()));
-        assert (customerDtos.get(0).getLastName().equals(customer.getLastName()));
-        assert (customerDtos.get(0).getTelephone().equals(customer.getTelephone()));
+        assert (customerDtos.iterator().next().getEmail().equals(customer.getEmail()));
+        assert (customerDtos.iterator().next().getFirstName().equals(customer.getFirstName()));
+        assert (customerDtos.iterator().next().getLastName().equals(customer.getLastName()));
+        assert (customerDtos.iterator().next().getTelephone().equals(customer.getTelephone()));
     }
 
     @Test
@@ -60,29 +60,29 @@ class CustomerMapperTest {
                 "John", "Dow", "1234567890");
         List<CustomerDto> customerDtos = new ArrayList<>();
         customerDtos.add(customerDto);
-        List<Customer> customers = customerMapper.toModels(customerDtos);
+        Iterable<Customer> customers = customerMapper.toModels(customerDtos);
         //assert that the customer object has the same values as the customerDto object
-        assert (customerDtos.get(0).getEmail().equals(customers.get(0).getEmail()));
-        assert (customerDtos.get(0).getFirstName().equals(customers.get(0).getFirstName()));
-        assert (customerDtos.get(0).getLastName().equals(customers.get(0).getLastName()));
-        assert (customerDtos.get(0).getTelephone().equals(customers.get(0).getTelephone()));
+        assert (customerDtos.get(0).getEmail().equals(customers.iterator().next().getEmail()));
+        assert (customerDtos.get(0).getFirstName().equals(customers.iterator().next().getFirstName()));
+        assert (customerDtos.get(0).getLastName().equals(customers.iterator().next().getLastName()));
+        assert (customerDtos.get(0).getTelephone().equals(customers.iterator().next().getTelephone()));
     }
 
     @Test
     void testToModelsEmptyList() {
         //generate new customerDto object
-        List<CustomerDto> customerDtos = new ArrayList<>();
-        List<Customer> customers = customerMapper.toModels(customerDtos);
+        Iterable<CustomerDto> customerDtos = new ArrayList<>();
+        Iterable<Customer> customers = customerMapper.toModels(customerDtos);
         //assert that the customer object has the same values as the customerDto object
-        assert (customers.size() == 0);
+        assert (!customers.iterator().hasNext());
     }
 
     @Test
     void testToDtosEmptyList() {
         //generate new customerDto object
         List<Customer> customers = new ArrayList<>();
-        List<CustomerDto> customerDtos = customerMapper.toDtos(customers);
+        Iterable<CustomerDto> customerDtos = customerMapper.toDtos(customers);
         //assert that the customer object has the same values as the customerDto object
-        assert (customerDtos.size() == 0);
+        assert (!customerDtos.iterator().hasNext());
     }
 }
