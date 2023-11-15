@@ -1,8 +1,7 @@
 package com.nextcommerce.customerdata.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,5 +36,12 @@ class CustomerServiceImplTest {
         when(customerRepository.findAll()).thenReturn(customers);
         assertEquals(customers, customerService.getCustomers());
 
+    }
+    @Test
+    void testCreateCustomer() {
+        Customer customer = new Customer("John.dow@mail.com","John","Dow","1234567890");
+        when(customerRepository.save(customer)).thenReturn(customer);
+        customerService.createCustomer(customer);
+        verify(customerRepository, times(1)).save(customer);
     }
 }
