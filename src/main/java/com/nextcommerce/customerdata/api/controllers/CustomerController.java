@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,6 +27,13 @@ public class CustomerController {
     @GetMapping("/customers")
     public ResponseEntity<Iterable<CustomerDto>> getCustomers() {
         return ResponseEntity.ok(customerMapper.toDtos(customerService.getCustomers()));
+    }
+
+    @PostMapping("/customer")
+    public ResponseEntity<CustomerDto> createCustomer(CustomerDto customerDto) {
+        Customer customer = customerMapper.toModel(customerDto);
+        customerService.createCustomer(customer);
+        return ResponseEntity.ok(customerDto);
     }
 
 }
