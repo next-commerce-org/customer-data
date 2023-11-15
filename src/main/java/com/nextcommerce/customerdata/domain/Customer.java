@@ -16,6 +16,8 @@ public class Customer {
     private String lastName;
     private String telephone;
     //all args constructor
+    public Customer() {
+    }
     public Customer(String email, String firstName, String lastName, String telephone) {
         this.email = email;
         this.firstName = firstName;
