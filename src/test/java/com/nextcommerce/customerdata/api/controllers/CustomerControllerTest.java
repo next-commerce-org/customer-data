@@ -67,7 +67,7 @@ public class CustomerControllerTest {
     }
 
     @Test
-    public void testCustomerPost() throws Exception {
+    void testCustomerPost() throws Exception {
         CustomerDto customerDto = new CustomerDto("hohn.dow@email.com",
                 "Hohn", "Dow", "1234567890");
         Customer customer = new Customer(customerDto.getEmail(), customerDto.getFirstName(), customerDto.getLastName(), customerDto.getTelephone());
