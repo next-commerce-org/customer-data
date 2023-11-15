@@ -20,7 +20,7 @@ public class CustomerMapper implements Mapper<CustomerDto, Customer> {
     }
 
     @Override
-    public List<CustomerDto> toDtos(List<Customer> customers) {
+    public Iterable<CustomerDto> toDtos(Iterable<Customer> customers) {
         List<CustomerDto> dtos = new ArrayList<>();
         customers.forEach(customer ->
 
@@ -31,7 +31,7 @@ public class CustomerMapper implements Mapper<CustomerDto, Customer> {
     }
 
     @Override
-    public List<Customer> toModels(List<CustomerDto> d) {
+    public Iterable<Customer> toModels(Iterable<CustomerDto> d) {
         List<Customer> customers = new ArrayList<>();
         d.forEach(customerDto ->
 

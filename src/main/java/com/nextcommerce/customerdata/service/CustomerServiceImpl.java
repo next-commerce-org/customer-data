@@ -1,9 +1,7 @@
 package com.nextcommerce.customerdata.service;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
+import com.nextcommerce.customerdata.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nextcommerce.customerdata.domain.Customer;
@@ -14,11 +12,15 @@ import com.nextcommerce.customerdata.domain.Customer;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    @Autowired
+    private CustomerRepository customerRepository;
+    CustomerServiceImpl(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
     @Override
-    public List<Customer> getCustomers() {
-        List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer("johndoe@example.com", "John", "Doe", "1234567890"));
-        return customers;
+    public Iterable<Customer> getCustomers() {
+        return customerRepository.findAll();
     }
 
 }

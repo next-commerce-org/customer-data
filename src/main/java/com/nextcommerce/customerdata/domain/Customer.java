@@ -1,19 +1,23 @@
 package com.nextcommerce.customerdata.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class Customer {
 
     @Id
+    @GeneratedValue
+    private Long id;
     private String email;
     private String firstName;
     private String lastName;
     private String telephone;
     //all args constructor
+    public Customer() {
+    }
     public Customer(String email, String firstName, String lastName, String telephone) {
         this.email = email;
         this.firstName = firstName;

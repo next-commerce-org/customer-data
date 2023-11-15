@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public ResponseEntity<List<CustomerDto>> getCustomers() {
+    public ResponseEntity<Iterable<CustomerDto>> getCustomers() {
         return ResponseEntity.ok(customerMapper.toDtos(customerService.getCustomers()));
     }
 
