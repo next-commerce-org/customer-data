@@ -13,14 +13,14 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.util.ArrayList;
 
-import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -65,5 +65,16 @@ public class CustomerControllerTest {
                 .andExpect(jsonPath("$[0].lastName", is("Dow")))
                 .andExpect(jsonPath("$[0].telephone", is("1234567890")));
     }
+
+    @Test
+    public void testCustomerPost() throws Exception {
+        CustomerDto customerDto = new CustomerDto("hohn.dow@email.com",
+                "Hohn", "Dow", "1234567890");
+        Customer customer = new Customer(customerDto.getEmail(), customerDto.getFirstName(), customerDto.getLastName(), customerDto.getTelephone());
+        when(mapper.toModel(customerDto)).thenReturn(customer);
+        mockMvc.perform(post("/customer")).andExpect(status().isOk());
+
+    }
+
 
 }
